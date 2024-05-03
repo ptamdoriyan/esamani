@@ -53,8 +53,7 @@
 									<tr>
 										<th>Nomor</th>
 										<th scope="col">Nama</th>
-										<th scope="col">Istirahat</th>
-										<th>Kembali</th>
+										<th scope="col">Kembali Istirahat</th>
 									</tr>
 								</thead>
 								<tbody id="isi">
@@ -125,9 +124,9 @@
 					success: function(response) {
 						console.log(response);
 						let nomor = 1;
-						$.each(response.absen_keluar, function(i, val) {
-							if (val.time !== null) {
-								let unix = val.time * 1000;
+						$.each(response.absen_masuk, function(i, val) {
+							if (val.jam_istirahat !== null) {
+								let unix = val.jam_istirahat * 1000;
 								var date = new Date(unix);
 								var time = date.toLocaleTimeString("en-US");
 								console.log(time);
@@ -153,24 +152,24 @@
 							nomor++;
 						});
 
-						$.each(response.absen_masuk, function(i, val) {
-							if (val.time !== null) {
-								let unix = val.time * 1000;
-								var date = new Date(unix);
-								var time = date.toLocaleTimeString("en-US");
-								console.log(time);
+						// $.each(response.absen_masuk, function(i, val) {
+						// 	if (val.time !== null) {
+						// 		let unix = val.time * 1000;
+						// 		var date = new Date(unix);
+						// 		var time = date.toLocaleTimeString("en-US");
+						// 		console.log(time);
 
-								$('.masuk' + i).after(`
-                                            <td>${time}</td>
-                  							   `);
-							} else {
-								var time = "";
-								$('.masuk' + i).after(`
-                                            <td class="bg-danger">${time}</td>
-                  							   `);
-							}
+						// 		$('.masuk' + i).after(`
+						//                     <td>${time}</td>
+						// 					   `);
+						// 	} else {
+						// 		var time = "";
+						// 		$('.masuk' + i).after(`
+						//                     <td class="bg-danger">${time}</td>
+						// 					   `);
+						// 	}
 
-						});
+						// });
 
 					}
 				});

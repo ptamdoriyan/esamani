@@ -47,7 +47,7 @@
 							<?php endif; ?>
 							<?php if (in_array("main-absensi-harian", $this->session->userdata['logged_in']['permissions'])) : ?>
 
-								<li><a href="<?= base_url(); ?>absen/siang/">Siang</a></li>
+								<li><a href="<?= base_url(); ?>siang/">Siang</a></li>
 
 							<?php endif; ?>
 
